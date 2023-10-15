@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserAuthService } from 'src/app/services/user-login/user-auth.service';
-import { UserRegistrationService } from 'src/app/services/user-registration/user-registration.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -30,34 +29,23 @@ export class ForgotPasswordComponent implements OnInit {
     })
    }
 
-
   //Validation of email
-
-   emailValidation(email : HTMLInputElement){
+   emailValidation(email : HTMLInputElement) {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email.value))
     {
       this.emailValid = false;
       this.noMMatching = false;
-      // console.log(this.emailValid)
     }
     else{
-  
       this.emailValid = true;
-
-      // console.log(this.emailValid)
     }
     if(email.value.length==0){
       this.emailValid = false
     }
   }  
-
-  
   
   //check if password and repassword are same
-
    checkPassword(password : HTMLInputElement,rePassword : HTMLInputElement){
-    
-    // console.log(password.value,rePassword.value);
     if(password.value.length!=0){
         this.prePasswordCheck = false;
           if(password.value == rePassword.value || rePassword.value.length==0){
@@ -95,7 +83,6 @@ export class ForgotPasswordComponent implements OnInit {
   phoneNumberValidaton(number : HTMLInputElement){
     let mobilePattern = "^((\\+91-?)|0)?[0-9]{10}$";
     if(number.value.match(mobilePattern) || number.value.length==0){
-      
       this.phoneValidation = false;
     }else{
       this.phoneValidation = true;
@@ -123,10 +110,8 @@ export class ForgotPasswordComponent implements OnInit {
       let contact = this.myFormGroup.controls['contact'].value;
       this.forgotService.forgotPassword(username,newPassword,contact)
       .subscribe((response)=>{
-        //  console.log(response);
         this.showElement = true;
         setTimeout(function() {
-          // console.log('hide');
           this.showElement = false;
           this.router.navigate(['/login'])
         }.bind(this), 3000);
@@ -134,16 +119,12 @@ export class ForgotPasswordComponent implements OnInit {
         this.myFormGroup.controls['password'].reset()
         this.myFormGroup.controls['rePassword'].reset()   
       },
-      // failure function
       failureData => {
         this.noMMatching = true;
-        // alert("Error Occurred !! Please Try Again")
-        //  console.log(failureData);
       })}else{
         alert("Enter Valid Details!!")
       }
     }
-
 
   ngOnInit(): void {
   }
