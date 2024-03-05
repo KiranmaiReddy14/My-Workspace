@@ -1,1 +1,14 @@
-<p>user-login works!</p>
+<div class="container col-md-4" style="margin-top: 10%;">
+    <h1 style="color: crimson;">User Login</h1>
+    <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">UserName</label>
+            <input type="text" class="form-control" [(ngModel)]="user.userId" id="userId" name="userId">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            <input type="text" class="form-control" [(ngModel)]="user.password" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>

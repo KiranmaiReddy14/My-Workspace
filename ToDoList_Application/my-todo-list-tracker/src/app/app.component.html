@@ -16,7 +16,7 @@
           <td>{{t.taskName}}</td>
           <td>{{t.status}}</td>
           <td>
-            <button class="btn btn-warning">Edit</button> &nbsp;
+            <button class="btn btn-warning" (click)="getTodo()">Edit</button> &nbsp;
             <button class="btn btn-danger">Delete</button>
           </td>
         </tr>
@@ -32,11 +32,16 @@
         <input type="radio" name="radio" id="radio" value="Started 😅" style="margin-left: 12%;" (change)="statusChange($event)">   Started 😅 <br>
         <input type="radio" name="radio" id="radio" value="Nah!!! Not yet Finsihed 😒" style="margin-left: 12%;" (change)="statusChange($event)">   Nah!!! Not yet Finsihed 😒 <br>
         <input type="radio" name="radio" id="radio" value="Finally! Finished!! 🤪" style="margin-left: 12%;" (change)="statusChange($event)">   Finally! Finished!! 🤪 <br>
+        <br><br>
         <button class="btn btn-success" (click)="addTask(task.value, $event)" *ngIf="!selected">Add Task</button>
     </div>
     <br><br>
     <div class="footer">
       <button class="btn btn-success" (click)="addNewTask()" *ngIf="selected">Add New Task</button>
     </div>
+  </div>
+
+  <div class="updateTask" *ngIf="updateTask">
+
   </div>
 </div>

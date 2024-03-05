@@ -23,7 +23,7 @@ public class ToDoController {
 
 	@GetMapping(path = "/getList")
 	public ResponseEntity<List<ToDoEntity>> getToDoList() {
-		System.out.println("Called ...");
+		System.out.println("hasash");
 		return new ResponseEntity<List<ToDoEntity>>(service.findAll(), HttpStatus.OK);
 	}
 

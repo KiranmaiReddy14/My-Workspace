@@ -14,13 +14,12 @@ export class AppComponent implements OnInit {
   index = 1;
   statusvalue = "";
   to: ToDo = new ToDo;
+  updateTask = false;
 
   constructor(private todoService: TodoServiceService) {}
   
   ngOnInit() {
     this.todoService.findAll().subscribe(todo => {
-      console.log("abcbcbc")
-      console.log(todo);
       this.todo = todo;
     });
     console.log(this.todo)
@@ -29,15 +28,24 @@ export class AppComponent implements OnInit {
   addNewTask() {
     this.selected = !this.selected;
   }
+
   addTask(taskName: any, status: any) {
     this.to = new ToDo;
     this.to.taskName = taskName;
-    console.log(this.statusvalue)
     this.to.status = this.statusvalue;
     this.todo.push(this.to);
     this.selected = !this.selected;
   }
+
   statusChange(s: any) {
     this.statusvalue = s.target.defaultValue;
+  }
+
+  getTodo() {
+    console.log("sjshdjshd")
+    this.todoService.findAll().subscribe(todo => {
+      console.log(todo)
+      this.todo = todo;
+    });
   }
 }
