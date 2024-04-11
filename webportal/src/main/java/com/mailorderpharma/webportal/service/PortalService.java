@@ -12,7 +12,6 @@ import com.mailorderpharma.webportal.entity.AdHocModel;
 import com.mailorderpharma.webportal.entity.DateModel;
 import com.mailorderpharma.webportal.entity.DrugDetails;
 import com.mailorderpharma.webportal.entity.PrescriptionDetails;
-import com.mailorderpharma.webportal.entity.RefillOrder;
 import com.mailorderpharma.webportal.entity.SearchById;
 import com.mailorderpharma.webportal.entity.UserData;
 import com.mailorderpharma.webportal.exceptions.DrugQuantityNotAvailable;
@@ -34,13 +33,16 @@ public interface PortalService {
 
 	String getSupportedDrugs(HttpSession session, ModelMap modelMap);
 
-	ModelAndView requestAdhocRefill(HttpSession session, AdHocModel adHocModel, ModelAndView view) throws NumberFormatException,
-			FeignException, ParseException, InvalidTokenException, DrugQuantityNotAvailable;
+	ModelAndView requestAdhocRefill(HttpSession session, AdHocModel adHocModel, ModelAndView view)
+			throws NumberFormatException, FeignException, ParseException, InvalidTokenException,
+			DrugQuantityNotAvailable;
 
 	String postSubscriptions(HttpSession session, Model model);
 
-	String getRefillDueAsofDate( HttpSession session, DateModel dateModel, Model model)
+	String getRefillDueAsofDate(HttpSession session, DateModel dateModel, Model model)
 			throws NumberFormatException, InvalidTokenException;
-	public DrugDetails searchById(HttpSession session,SearchById searchModel);
-	public DrugDetails searchByName(HttpSession session,SearchById searchModel);
+
+	public DrugDetails searchById(HttpSession session, SearchById searchModel);
+
+	public DrugDetails searchByName(HttpSession session, SearchById searchModel);
 }

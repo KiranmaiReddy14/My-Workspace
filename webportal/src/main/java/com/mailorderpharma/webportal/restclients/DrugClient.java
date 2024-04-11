@@ -13,11 +13,11 @@ import com.mailorderpharma.webportal.entity.DrugDetails;
 public interface DrugClient {
 
 	@GetMapping("/getAllDrugs")
-	public List<DrugDetails> getAllDrugs(); 
-	
+	public List<DrugDetails> getAllDrugs();
+
 	@GetMapping("/searchDrugsById/{id}")
 	public DrugDetails getDrugById(@RequestHeader("Authorization") String token, @PathVariable("id") String id);
-	
+
 	@GetMapping("/searchDrugsByName/{name}")
 	public DrugDetails getDrugByName(@RequestHeader("Authorization") String token, @PathVariable("name") String name);
 }

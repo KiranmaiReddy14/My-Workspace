@@ -15,7 +15,6 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(feign.RetryableException.class)
 	@ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
 	public Exception serviceUnavailableException() {
-		//log.info(" in global exc handler RetryableException");
 		return new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Temporarily service unavailable");
 	}
 
