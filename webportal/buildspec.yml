@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+   install:
+      runtime-versions:
+         docker: 18
+   pre_build:
+      commands:
+      - echo "Entered the pre-build phase"
+      - $(aws ecr get-login  --no-include-email --region $AWS_REGION)
+   build:
+      commands:
+      - echo "Entered build phase"
+      - cd SubscriptionService
+      - mvn compile
+      - mvn package
+      - echo " building docker image"
+      - docker build -t service/webapp .
+      - docker tag service/webapp 430321133782.dkr.ecr.us-east-1.amazonaws.com/j008-pod7-subscriptionrepo-ecr:webapp
+   post_build:
+      commands:
+      - echo "Entered the post-build phase"
+      - docker push 430321133782.dkr.ecr.us-east-1.amazonaws.com/j008-pod7-subscriptionrepo-ecr:webapp
+      - printf '[{"name":"webapp-container","imageUri":"%s"}]' 430321133782.dkr.ecr.us-east-1.amazonaws.com/j008-pod7-subscriptionrepo-ecr:webapp>taskdefinition.json
+artifacts:
+   files:
+   - webportal/taskdefinition.json
