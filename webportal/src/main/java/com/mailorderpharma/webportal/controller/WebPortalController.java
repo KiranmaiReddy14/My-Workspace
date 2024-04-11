@@ -35,12 +35,11 @@ public class WebPortalController {
 
 	@Autowired
 	private PortalService portalService;
-	
+
 	@Autowired
 	DrugClient drugClient;
 
-	/* Login end-points------------------------------------ */
-
+	/* Login end-points */
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView getLogin() {
 		return new ModelAndView("login");
@@ -49,8 +48,6 @@ public class WebPortalController {
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public String postLogin(@ModelAttribute UserData user, HttpSession session, ModelMap warning)
 			throws FeignException {
-		//log.info("inn login post" + user.toString());
-
 		return portalService.postLogin(user, session, warning);
 	}
 
@@ -64,7 +61,6 @@ public class WebPortalController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	/* DrugService end-points--------------------- */
 
 	@GetMapping("/supportedDrugs")
 	public String getSupportedDrugs(HttpSession session, ModelMap warning) {
@@ -75,11 +71,8 @@ public class WebPortalController {
 
 	@PostMapping(path = "/supportedDrugs")
 	public String postSupportedDrugs(HttpSession session, ModelMap warning) throws FeignException {
-		//log.info("Controller supportedDrugs");
 		return portalService.getSupportedDrugs(session, warning);
 	}
-
-	/* Subscription end-points--------------------- */
 
 	@GetMapping("/prescriptionform")
 	public String getPrescriptionForm(HttpSession session) {
@@ -91,7 +84,6 @@ public class WebPortalController {
 	@PostMapping("/subscribe")
 	public ModelAndView subscribe(@ModelAttribute PrescriptionDetails prescriptionDetails, HttpSession session)
 			throws FeignException {
-		//log.info("inn subscribe post controller " + prescriptionDetails.toString());
 		ModelAndView view = new ModelAndView("prescription");
 		view.addObject("msg", portalService.subscribe(prescriptionDetails, session));
 		return view;
@@ -99,7 +91,6 @@ public class WebPortalController {
 
 	@GetMapping("/subscriptions")
 	public String getAllSubscriptions(HttpSession session, Model model) throws FeignException {
-		//log.info("controller getAllSubscriptions");
 		return portalService.postSubscriptions(session, model);
 	}
 
@@ -108,22 +99,20 @@ public class WebPortalController {
 
 		return portalService.unsubscribe(session, sId);
 	}
-	/* Refill end-points-------------------- */
 
 	@PostMapping("/refillDueAsOfDate")
 	public String getRefillDueAsofDate(@ModelAttribute DateModel dateModel, HttpSession session, Model model)
 			throws NumberFormatException, InvalidTokenException {
-
 		return portalService.getRefillDueAsofDate(session, dateModel, model);
 	}
-	
+
 	@GetMapping("/refillDateEntry")
 	public ModelAndView refillDateEntry() {
 		return new ModelAndView("refillDateEntry");
 	}
+
 	@GetMapping("/adhocRefill/{sId}")
 	public String adhocRefill(@PathVariable("sId") Long sId, HttpSession session) {
-		//log.info("in controller get adhocrefill");
 		session.setAttribute("sub_Id", sId);
 		return "adhocRefill";
 	}
@@ -132,33 +121,33 @@ public class WebPortalController {
 	public ModelAndView postAdHocDetails(@ModelAttribute AdHocModel adHocModel, HttpSession session)
 			throws NumberFormatException, FeignException, ParseException, InvalidTokenException,
 			DrugQuantityNotAvailable {
-		//log.info("in postAdHocDetails controller " + adHocModel.getLocation() + adHocModel.isPaymentStatus()
-				//+ adHocModel.getQuantity());
 		ModelAndView view = new ModelAndView("refillstatus");
 		return portalService.requestAdhocRefill(session, adHocModel, view);
 	}
+
 	@GetMapping("/refillstatus")
 	public ModelAndView refillStatus() {
 		return new ModelAndView("refillstatus");
 	}
-	
+
 	@GetMapping("/search")
 	public String search() {
 		return "search";
 	}
+
 	@PostMapping("/searchDrugById")
-	public ModelAndView searchDrugById(HttpSession session,@ModelAttribute SearchById searchModel) {
+	public ModelAndView searchDrugById(HttpSession session, @ModelAttribute SearchById searchModel) {
 		ModelAndView view = new ModelAndView("search");
 		view.addObject("id", searchModel.getId());
-		view.addObject("drugdetails", portalService.searchById(session,searchModel));
+		view.addObject("drugdetails", portalService.searchById(session, searchModel));
 		return view;
 	}
+
 	@PostMapping("/searchDrugByName")
-	public ModelAndView searchDrugByName(HttpSession session,@ModelAttribute SearchById searchModel) {
+	public ModelAndView searchDrugByName(HttpSession session, @ModelAttribute SearchById searchModel) {
 		ModelAndView view = new ModelAndView("search");
 		view.addObject("name", searchModel.getName());
-		view.addObject("drugdetails", portalService.searchByName(session,searchModel));
+		view.addObject("drugdetails", portalService.searchByName(session, searchModel));
 		return view;
 	}
-	
 }

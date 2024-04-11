@@ -10,7 +10,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
-//@EnableAutoConfiguration
 @Configuration
 @EnableFeignClients
 public class WebportalApplication {

@@ -14,22 +14,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class RefillOrder {
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
-	@JsonFormat(pattern="dd-MM-yyyy hh:mm:ss")
+	@JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss")
 	Date refilledDate;
 	Boolean payStatus;
 	long sub_id;
 	int quantity;
 	String memberId;
-
 
 }

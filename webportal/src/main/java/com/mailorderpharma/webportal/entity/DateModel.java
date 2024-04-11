@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DateModel {
-	 @DateTimeFormat(pattern = "yyyy-mm-dd")
+
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	Date date;
 
 	public Date getDate() {

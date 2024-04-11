@@ -20,11 +20,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DrugLocationDetails {
 
-	@Id 
+	@Id
 	private String serialId;
 	private String location;
 	private int quantity;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	@JoinColumn(name = "drugId")

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -27,10 +26,10 @@ public class DrugDetails {
 	private String manufacturer;
 	private Date manufactureDate;
 	private Date expiryDate;
-	
+
 	private String msg;
 
-	@OneToMany(mappedBy="drugDetails")
+	@OneToMany(mappedBy = "drugDetails")
 	private List<DrugLocationDetails> druglocationQuantities = new ArrayList<DrugLocationDetails>();
 
 	public void setMsg(String msg) {

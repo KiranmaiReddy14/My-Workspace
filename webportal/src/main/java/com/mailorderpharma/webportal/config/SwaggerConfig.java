@@ -24,7 +24,7 @@ public class SwaggerConfig {
          return new ApiInfoBuilder()
                  .title("WebPortal Service")
                  .description("WebPortal for Mail-order-Pharmacy")
-                 .termsOfServiceUrl("http://www.cognizant.com")
+                 .termsOfServiceUrl("")
                  .version("2.0")
                  .build();
      }
