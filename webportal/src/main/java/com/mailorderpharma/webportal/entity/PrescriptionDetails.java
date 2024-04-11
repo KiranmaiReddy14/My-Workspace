@@ -23,5 +23,11 @@ public class PrescriptionDetails {
 	private int quantity;
 	private int courseDuration;
 	private String doctorName;
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 
 }

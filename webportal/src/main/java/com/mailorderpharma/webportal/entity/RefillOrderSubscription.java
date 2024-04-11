@@ -18,13 +18,53 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "RefillOrderSubscription")
 public class RefillOrderSubscription {
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
 	long subscriptionId;
 	String memberId;
 	int refillQuantity;
 	int refillTime;
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getSubscriptionId() {
+		return subscriptionId;
+	}
+
+	public void setSubscriptionId(long subscriptionId) {
+		this.subscriptionId = subscriptionId;
+	}
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public int getRefillQuantity() {
+		return refillQuantity;
+	}
+
+	public void setRefillQuantity(int refillQuantity) {
+		this.refillQuantity = refillQuantity;
+	}
+
+	public int getRefillTime() {
+		return refillTime;
+	}
+
+	public void setRefillTime(int refillTime) {
+		this.refillTime = refillTime;
+	}
 
 }

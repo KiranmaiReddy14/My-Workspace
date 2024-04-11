@@ -32,4 +32,8 @@ public class DrugDetails {
 
 	@OneToMany(mappedBy="drugDetails")
 	private List<DrugLocationDetails> druglocationQuantities = new ArrayList<DrugLocationDetails>();
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 }

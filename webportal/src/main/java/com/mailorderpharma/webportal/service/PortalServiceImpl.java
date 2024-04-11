@@ -302,7 +302,6 @@ public class PortalServiceImpl implements PortalService {
 			drugdetails.setMsg("Drug Details :");
 			return drugdetails;
 		} catch (Exception e) {
-			log.info("in catch portalservice searchById method " + e.getMessage() + " " + e.getClass().toString());
 			if (e.getClass().toString().contains("feign.RetryableException")
 					|| e.getClass().toString().contains("UndeclaredThrowableException"))
 				msg = "Service is Temporarily down. Try again later.";
@@ -323,7 +322,6 @@ public class PortalServiceImpl implements PortalService {
 			drugdetails.setMsg("Drug Details :");
 			return drugdetails;
 		} catch (Exception e) {
-			log.info("in catch portalservice searchByName method " + e.getMessage() + " " + e.getClass().toString());
 			if (e.getClass().toString().contains("feign.RetryableException")
 					|| e.getClass().toString().contains("UndeclaredThrowableException"))
 				msg = "Service is Temporarily down. Try again later.";
