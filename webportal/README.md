@@ -1,1 +1,1 @@
-
+web portal is a user-friendly application designed to simplify the process of ordering medications and managing refills efficiently. Here users can easily browse through medications, check their availability, and conveniently place orders for refills with just a few clicks.
