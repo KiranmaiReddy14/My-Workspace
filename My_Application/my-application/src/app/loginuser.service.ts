@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Observable } from 'rxjs';
@@ -7,11 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginuserService {
-  private baseUrl = "htp://localhost:8080/user/login";
+  private baseUrl = "http://localhost:8080/login";
   constructor(private http: HttpClient) { }
 
-  loginUser(user: User): Observable<object> {
-    console.log(user);
-    return this.http.post(`{$this.baseUrl}`, user);
+  loginUser(userId: string, password: string): Observable<any> {
+    const params = new HttpParams()
+      .set('userId', userId)
+      .set('password', password);
+    return this.http.get(this.baseUrl, { params });
   }
 }

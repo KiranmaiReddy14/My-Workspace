@@ -1,4 +1,4 @@
 export class User {
-    userId!:String;
-    password!:String;
+    userId!:string;
+    password!:string;
 }
