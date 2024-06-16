@@ -13,7 +13,9 @@ MediRefill Portal is a web application aimed at providing users with a seamless 
 
 **Prescription Browsing:** View current prescriptions and their details.
 
-**Refill Request:** Place orders for medication refills directly through the portal.
+**Refill Request:** Place orders for medication refills directly through the portal. <br>
+
+
 
 
 
@@ -36,6 +38,7 @@ MediRefill Portal is a web application aimed at providing users with a seamless 
 - Clone the repository:
 
   git clone https://github.com/KiranmaiReddy14/My-Workspace.git
+  
   cd My-Workspace/webportal
 
 - Build the project using Maven:
