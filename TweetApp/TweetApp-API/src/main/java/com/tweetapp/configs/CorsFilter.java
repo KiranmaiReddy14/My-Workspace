@@ -24,7 +24,6 @@ public class CorsFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		final HttpServletResponse response = (HttpServletResponse) res;
 
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -35,7 +34,6 @@ public class CorsFilter implements Filter {
 			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		} else {
-			// forwarding the request to original destination
 			chain.doFilter(req, res);
 		}
 

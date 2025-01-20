@@ -20,26 +20,19 @@ public class TweetAppApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TweetAppApiApplication.class, args);
 	}
-	
+
 	@Bean
 	public Docket swaggerConfiguration() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.paths(PathSelectors.any())
-				.apis(RequestHandlerSelectors.basePackage("com.tweetapp"))
-				.build()
-				.apiInfo(apiInfo());
+		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any())
+				.apis(RequestHandlerSelectors.basePackage("com.tweetapp")).build().apiInfo(apiInfo());
 	}
-	
+
 	private ApiInfo apiInfo() {
 		return new ApiInfo("Tweet APP Api",
-							"An application where user can post, like and comment a tweet, at the same time search users and their tweets.",
-							"1.0",
-							"Free to use",
-							new springfox.documentation.service.Contact("Emmanuel K", "https://github.com", "emmanuelkakumanu@gmail.com") , 
-							"EK license",
-							"https://github.com",
-							Collections.emptyList());
+				"An application where user can post, like and comment a tweet, at the same time search users and their tweets.",
+				"1.0", "Free to use", new springfox.documentation.service.Contact("Kiranmai",
+						"https://github.com/KiranmaiReddy14", "kiranmaic14@gmail.com"),
+				"EK license", "https://github.com", Collections.emptyList());
 	}
-	
+
 }
