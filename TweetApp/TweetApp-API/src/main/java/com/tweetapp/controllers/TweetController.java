@@ -32,14 +32,12 @@ public class TweetController {
 
 	private final Logger log = LoggerFactory.getLogger(TweetController.class);
 
-	// Method to post a new tweet
 	@PostMapping(value = "/tweets/{username}/add")
 	public ResponseEntity<?> postNewTweet(@PathVariable("username") String username, @RequestBody Tweet newTweet) {
 		return new ResponseEntity<>(tweetService.postNewTweet(username, newTweet), HttpStatus.CREATED);
 
 	}
 
-	// Method to retrieve all tweets
 	@GetMapping(value = "/tweets/all")
 	public ResponseEntity<?> getAllTweets() {
 
@@ -51,7 +49,6 @@ public class TweetController {
 		}
 	}
 
-	// Method to get a user's tweets
 	@GetMapping(value = "/tweets/{username}")
 	public ResponseEntity<?> getUserTweets(@PathVariable("username") String username,
 			@RequestHeader(value = "loggedInUser") String loggedInUser) {
@@ -76,7 +73,6 @@ public class TweetController {
 		}
 	}
 
-	// Method to update a tweet
 	@PutMapping(value = "/tweets/{username}/update")
 	public ResponseEntity<?> updateTweet(@PathVariable("username") String userId,
 			@RequestBody TweetUpdate tweetUpdate) {
@@ -92,7 +88,6 @@ public class TweetController {
 		}
 	}
 
-	// Method to delete a tweet
 	@DeleteMapping(value = "/tweets/{username}/delete")
 	public ResponseEntity<?> deleteTweet(@PathVariable("username") String userId,
 			@RequestHeader(value = "tweetId") String tweetId) {
@@ -106,7 +101,6 @@ public class TweetController {
 		}
 	}
 
-	// Post tweet Like
 	@PostMapping(value = "/tweets/{username}/like/{tweetId}")
 	public ResponseEntity<?> likeATweet(@PathVariable("username") String username,
 			@PathVariable(value = "tweetId") String tweetId) {
@@ -120,7 +114,6 @@ public class TweetController {
 		}
 	}
 
-	// dislike a tweet
 	@PostMapping(value = "/tweets/{username}/dislike/{tweetId}")
 	public ResponseEntity<?> dislikeATweet(@PathVariable("username") String username,
 			@PathVariable(value = "tweetId") String tweetId) {
@@ -134,7 +127,6 @@ public class TweetController {
 		}
 	}
 
-	// Post tweet comment
 	@PostMapping(value = "/tweets/{username}/reply/{tweetId}")
 	public ResponseEntity<?> replyToTweet(@PathVariable("username") String userId,
 			@PathVariable("tweetId") String tweetId, @RequestBody Reply tweetReply) {

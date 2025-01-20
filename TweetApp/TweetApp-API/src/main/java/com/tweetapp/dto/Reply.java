@@ -14,7 +14,6 @@ public class Reply {
 
 	public Reply() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Reply(String comment) {

@@ -6,7 +6,6 @@ public class AuthenticationResponse {
 
 	public AuthenticationResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public AuthenticationResponse(String response) {

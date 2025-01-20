@@ -7,7 +7,6 @@ public class Comment {
 
 	public Comment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Comment(String username, String comment) {

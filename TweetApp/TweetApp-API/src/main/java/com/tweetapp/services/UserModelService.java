@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tweetapp.entities.UserModel;
@@ -27,9 +28,10 @@ public class UserModelService {
 	// create new user
 	public UserModel createUser(UserModel user) throws UsernameAlreadyExists {
 		UserModel foundedUser = userRepository.findByUsername(user.getUsername());
-		if (foundedUser != null) {
+		if (foundedUser != null)
 			throw new UsernameAlreadyExists("username already exists");
-		}
+		String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encodedPassword);// Set the hashed password
 		return userRepository.save(user);
 	}
 

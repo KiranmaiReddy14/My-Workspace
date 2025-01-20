@@ -6,7 +6,6 @@ public class TweetUpdate {
 
 	public TweetUpdate() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getTweetId() {

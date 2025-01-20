@@ -23,7 +23,6 @@ public class Tweet {
 
 	public Tweet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getTweetId() {

@@ -19,7 +19,6 @@ public class TweetResponse implements Serializable {
 
 	public TweetResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getTweetId() {

@@ -30,10 +30,8 @@ public class TweetService {
 
 	// Method to return all tweets of a user
 	public List<TweetResponse> getUserTweets(String username, String loggedInUser) throws InvalidUsernameException {
-		// use username as login id
 		if (!StringUtils.isBlank(username)) {
 			List<Tweet> tweets = tweetRepository.findByUsername(username);
-			// List<TweetResponse> tweetResponse= new ArrayList<>();
 			List<TweetResponse> tweetResponse = tweets.stream().map(tweet -> {
 				Integer likesCount = tweet.getLikes().size();
 				Boolean likeStatus = tweet.getLikes().contains(loggedInUser);
@@ -51,7 +49,6 @@ public class TweetService {
 
 	// Method to post a new tweet
 	public Tweet postNewTweet(String username, Tweet newTweet) {
-
 		newTweet.setTweetId(UUID.randomUUID().toString());
 		return tweetRepository.insert(newTweet);
 	}
@@ -75,14 +72,10 @@ public class TweetService {
 
 	// Method to update an existing tweet
 	public Tweet updateTweet(String userId, String tweetId, String updatedTweetText) throws TweetDoesNotExistException {
-
 		Optional<Tweet> originalTweetOptional = tweetRepository.findById(tweetId);
-		System.out.println("===========>" + tweetId);
-		System.out.println("===========>" + updatedTweetText);
 		if (originalTweetOptional.isPresent()) {
 			Tweet tweet = originalTweetOptional.get();
 			tweet.setTweetText(updatedTweetText);
-
 			return tweetRepository.save(tweet);
 		} else {
 			throw new TweetDoesNotExistException("This tweet does not exist anymore.");
@@ -96,7 +89,6 @@ public class TweetService {
 			tweetRepository.deleteById(tweetId);
 			return true;
 		} else {
-
 			throw new TweetDoesNotExistException("This tweet does not exist anymore.");
 		}
 	}

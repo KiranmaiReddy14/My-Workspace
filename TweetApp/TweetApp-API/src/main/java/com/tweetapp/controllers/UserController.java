@@ -17,32 +17,31 @@ import com.tweetapp.services.UserModelService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class UserController {
-	
+
 	@Autowired
 	private UserModelService userModelService;
-	
-	//method to update user password
+
 	@PutMapping(value = "/tweets/{username}/forgot")
 	public ResponseEntity<?> changePassword(@PathVariable("username") String username,
 			@RequestBody NewPassword newPassword) {
 		try {
-			return new ResponseEntity<>(userModelService.changePassword(username, newPassword.getNewPassword() , newPassword.getContact()), HttpStatus.OK);
+			return new ResponseEntity<>(
+					userModelService.changePassword(username, newPassword.getNewPassword(), newPassword.getContact()),
+					HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(new AuthenticationResponse("Unable to change password"),
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	// Method to retrieve all users list
+
 	@GetMapping(value = "/tweets/users/all")
 	public ResponseEntity<?> getAllUsers() {
 		return new ResponseEntity<>(userModelService.getAllUsers(), HttpStatus.OK);
 
 	}
-	
-	//method to search for like users by username
+
 	@GetMapping(value = "/tweets/user/search/{username}")
-	public ResponseEntity<?> searchForUsers(@PathVariable String username){
+	public ResponseEntity<?> searchForUsers(@PathVariable String username) {
 		return new ResponseEntity<>(userModelService.getUsersByUsername(username), HttpStatus.OK);
 	}
 }

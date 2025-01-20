@@ -7,7 +7,6 @@ public class Like {
 
 	public Like() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Like(String tweetId, String username) {

@@ -6,7 +6,6 @@ public class NewPassword {
 
 	public NewPassword() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public NewPassword(String newPassword, String contact) {

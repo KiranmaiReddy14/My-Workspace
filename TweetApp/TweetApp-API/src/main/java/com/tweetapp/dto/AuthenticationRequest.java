@@ -8,7 +8,6 @@ public class AuthenticationRequest {
 
 	public AuthenticationRequest() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public AuthenticationRequest(String username, String password) {
