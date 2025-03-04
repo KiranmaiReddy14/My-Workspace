@@ -20,6 +20,7 @@ This is a Spring Boot application that consumes the Spotify API using the PKCE O
 ## Resources
 
 * [Spotify API Docs](https://developer.spotify.com/documentation/web-api/)
+* [Authorization](https://developer.spotify.com/documentation/web-api/concepts/authorization)
 
   
 ## Technologies Used
